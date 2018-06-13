@@ -80,7 +80,7 @@ exports.stopScrolling = function (element, axis) {
 };
 
 exports.env = {
-  isWebKit: 'WebkitAppearance' in (document.documentElement.style,
+  isWebKit: 'WebkitAppearance' in document.documentElement.style,
   supportsTouch: (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch),
   supportsIePointer: window.navigator.msMaxTouchPoints !== null
 };
