@@ -6,6 +6,9 @@ var dom = require('./dom');
 var toInt = exports.toInt = function (x) {
   return parseInt(x, 10) || 0;
 };
+/** SRR FIXES */
+var document
+var window
 
 var clone = exports.clone = function (obj) {
   if (!obj) {
@@ -77,7 +80,7 @@ exports.stopScrolling = function (element, axis) {
 };
 
 exports.env = {
-  isWebKit: 'WebkitAppearance' in document.documentElement.style,
-  supportsTouch: (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch),
-  supportsIePointer: window.navigator.msMaxTouchPoints !== null
+  isWebKit: 'WebkitAppearance' in (document ? document.documentElement.style : []),
+  supportsTouch: (('ontouchstart' in (window || [])) || (window ? window.DocumentTouch : false) && document instanceof window.DocumentTouch),
+  supportsIePointer: window && (window.navigator.msMaxTouchPoints !== null)
 };
